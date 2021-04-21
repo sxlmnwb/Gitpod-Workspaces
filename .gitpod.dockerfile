@@ -1,23 +1,19 @@
-#Created by sxlmnwb
+#
+# // Copyright (C) 2021 Salman Wahib (sxlmnwb)
+#
 
-#Ubuntu latest
+# Fetch Ubuntu Latest
 FROM gitpod/workspace-full:latest
 
-#User root
+# Root
 USER root
 
-#Start
-RUN echo "---Start---"
+# Dependency
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install openssh-server screen python git openjdk-8-jdk android-tools-adb bc bison \
+build-essential curl flex g++-multilib gcc-multilib gnupg gperf imagemagick lib32ncurses-dev \
+lib32readline-dev lib32z1-dev  liblz4-tool libncurses5-dev libsdl1.2-dev libssl-dev \
+libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc yasm zip zlib1g-dev \
+libtinfo5 libncurses5 neofetch htop mc -y
 
-#Installing package and etc
-RUN apt-get update && apt-get install -y \
-    #Building kernel
-    && apt-get install bc bison ca-certificates curl ccache cmake file flex gcc g++ git libelf-dev ninja-build libc6-dev libssl-dev openssl python python3 texinfo u-boot-tools xz-utils zlib1g-dev lld ssh wget zip zstd sudo make clang gcc-arm-linux-gnueabi software-properties-common -y \
-    #Building rom
-    && apt-get install git-core gnupg flex bison build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig -y \
-    #More
-    && apt-get install nano neofetch htop mc screen -y
-    
-#Done
-RUN echo "---Done---"
-
+# End
